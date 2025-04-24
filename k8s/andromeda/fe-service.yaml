@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: andromeda
+    tier: frontend
+  name: fe-andromeda
+  namespace: andromeda
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: andromeda
+    tier: frontend
+  type: NodePort

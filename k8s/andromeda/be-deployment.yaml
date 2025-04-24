@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: andromeda
+    tier: backend
+  namespace: andromeda
+  name: be-andromeda
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: andromeda
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: andromeda
+        tier: backend
+    spec:
+      containers:
+      - image: sidsahu/be-andromeda:0.0.1
+        name: be-andromeda
+        ports:
+        - containerPort: 5000
