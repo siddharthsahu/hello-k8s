@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: fe-andromeda
-        image: sidsahu/fe-andromeda:0.0.1
+        image: sidsahu/fe-andromeda:0.0.2
         ports:
         - containerPort: 3000
 

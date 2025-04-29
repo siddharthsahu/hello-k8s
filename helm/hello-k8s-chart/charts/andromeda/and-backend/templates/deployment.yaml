@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "and-backend.fullname" . }}
+  labels:
+    app: {{  include "and-backend.teamname" . }}
+    tier: {{  include "and-backend.tier" . }}
+  namespace: {{  include "and-backend.teamname" . }}
+spec:
+#  replicas: {{ .Values.replicaCount }}
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{  include "and-backend.teamname" . }}
+      tier: {{  include "and-backend.tier" . }}
+  template:
+    metadata:
+      labels:
+        app: {{  include "and-backend.teamname" . }}
+        tier: {{  include "and-backend.tier" . }}
+    spec:
+      containers:
+      - image: sidsahu/be-andromeda:0.0.1
+        name: be-andromeda
+        ports:
+        - containerPort: 5000
+

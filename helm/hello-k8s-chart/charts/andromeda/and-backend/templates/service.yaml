@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "and-backend.fullname" . }}
+  labels:
+    app: {{  include "and-backend.teamname" . }}
+    tier: {{  include "and-backend.tier" . }}
+  namespace: {{  include "and-backend.teamname" . }}
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: {{  include "and-backend.teamname" . }}
+    tier: {{  include "and-backend.tier" . }}
+  type: NodePort
+
